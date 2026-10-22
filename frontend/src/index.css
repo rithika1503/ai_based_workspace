@@ -1,0 +1,112 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  *, *::before, *::after { box-sizing: border-box; }
+
+  html {
+    font-family: 'Inter', system-ui, sans-serif;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  body {
+    background-color: #fafaf9;
+    color: #1c1917;
+    margin: 0;
+  }
+
+  input, textarea, select {
+    font-family: inherit;
+  }
+}
+
+@layer components {
+  /* ── Buttons ─────────────────────────────────── */
+  .btn {
+    @apply inline-flex items-center gap-2 px-4 py-2 text-sm font-medium rounded transition-colors duration-150 cursor-pointer border-0 outline-none;
+  }
+  .btn-primary {
+    @apply btn bg-accent text-white hover:bg-accent-hover;
+  }
+  .btn-ghost {
+    @apply btn bg-transparent text-ink-muted hover:bg-surface-border;
+  }
+  .btn-danger {
+    @apply btn bg-pastel-red text-red-700 hover:bg-red-100;
+  }
+  .btn-sm {
+    @apply px-3 py-1.5 text-xs;
+  }
+
+  /* ── Cards ───────────────────────────────────── */
+  .card {
+    @apply bg-surface-raised rounded-lg border border-surface-border shadow-card;
+  }
+
+  /* ── Inputs ──────────────────────────────────── */
+  .input {
+    @apply w-full px-3 py-2 text-sm bg-white border border-surface-border rounded
+           text-ink placeholder-ink-soft
+           focus:outline-none focus:ring-2 focus:ring-accent/30 focus:border-accent
+           transition-colors duration-150;
+  }
+  .label {
+    @apply block text-xs font-medium text-ink-muted mb-1;
+  }
+
+  /* ── Badges ──────────────────────────────────── */
+  .badge {
+    @apply inline-flex items-center px-2 py-0.5 rounded-full text-xs font-medium;
+  }
+  .badge-blue   { @apply badge bg-pastel-blue text-blue-700; }
+  .badge-purple { @apply badge bg-pastel-purple text-purple-700; }
+  .badge-green  { @apply badge bg-pastel-green text-green-700; }
+  .badge-yellow { @apply badge bg-pastel-yellow text-yellow-700; }
+  .badge-red    { @apply badge bg-pastel-red text-red-700; }
+  .badge-pink   { @apply badge bg-pastel-pink text-pink-700; }
+
+  /* ── Sidebar ─────────────────────────────────── */
+  .sidebar {
+    @apply w-56 h-full bg-surface-raised border-r border-surface-border flex flex-col;
+  }
+  .sidebar-item {
+    @apply flex items-center gap-2.5 px-3 py-2 text-sm text-ink-muted rounded mx-2
+           hover:bg-[#f0eeec] cursor-pointer transition-colors duration-100;
+  }
+  .sidebar-item.active {
+    @apply bg-accent-light text-accent font-medium;
+  }
+
+  /* ── Kanban Column ───────────────────────────── */
+  .kanban-col {
+    @apply flex flex-col gap-2 min-w-[220px] max-w-[240px] bg-[#fafaf9]
+           rounded-lg p-3 h-fit;
+  }
+  .kanban-col-header {
+    @apply flex items-center justify-between mb-2;
+  }
+
+  /* ── Task Card ───────────────────────────────── */
+  .task-card {
+    @apply card p-3 cursor-pointer hover:shadow-md transition-shadow duration-150 select-none;
+  }
+
+  /* ── Modal ───────────────────────────────────── */
+  .modal-backdrop {
+    @apply fixed inset-0 bg-black/20 flex items-center justify-center z-50 p-4;
+  }
+  .modal {
+    @apply card shadow-modal w-full max-w-lg max-h-[90vh] overflow-y-auto;
+  }
+  .modal-header {
+    @apply flex items-center justify-between p-5 border-b border-surface-border;
+  }
+  .modal-body {
+    @apply p-5 space-y-4;
+  }
+  .modal-footer {
+    @apply flex justify-end gap-2 p-5 border-t border-surface-border;
+  }
+}
