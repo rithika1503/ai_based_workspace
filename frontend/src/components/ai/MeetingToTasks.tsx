@@ -73,7 +73,11 @@ export default function MeetingToTasks({ projectId, onAccepted }: Props) {
 
   const toggleSelect = (i: number) => {
     const next = new Set(selected);
-    next.has(i) ? next.delete(i) : next.add(i);
+    if (next.has(i)) {
+      next.delete(i);
+    } else {
+      next.add(i);
+    }
     setSelected(next);
   };
 
